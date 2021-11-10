@@ -19,7 +19,7 @@ class License(Cog):
     @commands.has_any_role("License Supplier")
     async def license(self, ctx, user: discord.Member = None, rank = "null"):
         if user == None:
-            user = ctx.author
+            user = ctx.author 
 
         card = Image.open("assets/cardtemplate-notext-wm.png")
 
@@ -35,8 +35,8 @@ class License(Cog):
         draw = ImageDraw.Draw(card)
         font = ImageFont.truetype("assets/Rubik-Bold.ttf", 150)
 
-        username = str(user)
-        provider = str(ctx.author)
+        username = str(user)[:-5]
+        provider = str(ctx.author)[:-5]
 
         draw.text((1775, 440), username, (0, 0, 0), anchor="ms",  font=font)
         draw.text((1775, 825), provider, (0, 0, 0), anchor="ms", font=font)
