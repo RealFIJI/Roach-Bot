@@ -6,7 +6,7 @@ import os
 
 bot = commands.Bot(
     command_prefix= ("<:wetroaches:838923368349564960> "),
-    intents=discord.Intents(messages=True, guilds=True, bans=True, reactions=True),
+    intents=discord.Intents.all(),
     case_insensitive=True
 )
 
@@ -21,7 +21,10 @@ async def on_ready():
 
     # Status
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="roaches"))
-     
+
+
+
+
 
 # Loads all cogs.
 for filename in os.listdir('./cogs'):
@@ -29,4 +32,4 @@ for filename in os.listdir('./cogs'):
     bot.load_extension(f'cogs.{filename[:-3]}')
 
 #Pass
-bot.run('BOT_TOKEN')
+bot.run('TOKEN')
