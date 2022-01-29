@@ -34,7 +34,7 @@ class Listeners(Cog):
     # list of roles to get from emotes
     global emote_roles
     emote_roles = {
-        'hesroachyouknow' : 'roach ping',
+        'wetroaches' : 'roach ping',
         'cookedroaches' : 'roach event',
         'cookingroaches' : 'roach decision'
         }
