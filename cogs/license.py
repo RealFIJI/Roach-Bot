@@ -18,13 +18,16 @@ class License(Cog):
     @commands.command()
     @commands.has_any_role("License Supplier")
     async def license(self, ctx, user: discord.Member = None, rank = "null"):
+        # Show as typing while generating
+        await ctx.channel.typing()
+
         if user == None:
             user = ctx.author 
 
         card = Image.open("assets/cardtemplate-notext-wm.png")
 
         # Put pfp in license
-        asset = user.avatar_url_as(size = 512)
+        asset = user.display_avatar.replace(size=512)
         data = BytesIO(await asset.read())
         pfp = Image.open(data)
 
@@ -35,12 +38,12 @@ class License(Cog):
         draw = ImageDraw.Draw(card)
         font = ImageFont.truetype("assets/Rubik-Bold.ttf", 150)
 
-        username = str(user)[:-5]
-        provider = str(ctx.author)[:-5]
+        username = str(user)[:15]
+        provider = str(ctx.author)[:15]
 
-        draw.text((1775, 440), username, (0, 0, 0), anchor="ms",  font=font)
-        draw.text((1775, 825), provider, (0, 0, 0), anchor="ms", font=font)
-        draw.text((1775, 1140), rank, (0, 0, 0), anchor="ms", font=font)
+        draw.text((1775, 440), username, (0, 0, 0), anchor="ms",  font=font, features=["-liga"])
+        draw.text((1775, 825), provider, (0, 0, 0), anchor="ms", font=font, features=["-liga"])
+        draw.text((1775, 1140), rank, (0, 0, 0), anchor="ms", font=font, features=["-liga"])
 
         card.save("assets/license.png")
         await ctx.channel.send(file = discord.File("assets/license.png"))
@@ -51,5 +54,5 @@ class License(Cog):
 
 
 # Setup the cog for the bot
-def setup(bot: Bot) -> None:
-    bot.add_cog(License(bot))
+async def setup(bot: Bot) -> None:
+    await bot.add_cog(License(bot))

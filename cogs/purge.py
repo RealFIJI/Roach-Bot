@@ -31,5 +31,5 @@ class Purge(Cog):
         await ctx.channel.send(error)
 
 # Setup the cog for the bot
-def setup(bot: Bot) -> None:
-    bot.add_cog(Purge(bot))
+async def setup(bot: Bot) -> None:
+    await bot.add_cog(Purge(bot))

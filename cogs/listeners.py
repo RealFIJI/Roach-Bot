@@ -28,6 +28,9 @@ class Listeners(Cog):
         if("wet roaches") == message.content:
             await message.channel.send("<:wetroaches:838923368349564960>") 
 
+        if("<:wetroaches:838923368349564960>") == message.content:
+            await message.channel.send("<:wetroaches:838923368349564960>") 
+
 
 
 
@@ -66,5 +69,5 @@ class Listeners(Cog):
 
 
 # Setup the cog for the bot
-def setup(bot: Bot) -> None:
-    bot.add_cog(Listeners(bot))
+async def setup(bot: Bot) -> None:
+    await bot.add_cog(Listeners(bot))
