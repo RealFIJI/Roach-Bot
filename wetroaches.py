@@ -4,10 +4,15 @@ from discord.ext.commands import bot
 
 import os
 
+
+intents = discord.Intents.default()
+intents.presences = True
+intents.message_content = True
+
 bot = commands.Bot(
     command_prefix= ("<:wetroaches:838923368349564960> "),
-    intents=discord.Intents.all(),
-    case_insensitive=True
+    intents=intents,
+    case_insensitive=True,
 )
 
 # Removes default help command
