@@ -18,8 +18,12 @@ class License(Cog):
         # This is repeated code...
         self.milestones = { 
             15: 'Basic',
+            50: 'Intermediate',
             100: 'Expert',
-            500: 'Elite',
+            250: 'Elite',
+            500: 'Ultra',
+            1000: 'Awesome',
+            2500: 'Mega',
             5000: 'God'
          }
 

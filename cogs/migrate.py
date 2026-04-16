@@ -24,20 +24,23 @@ class Migrate(Cog):
         # The guidelines for each role
         role_baselines = {
             'Roach License - God': 5000, 
+            'Roach License - Mega': 2500,
+            'Roach License - Awesome': 1000,
             'Roach License - Elite': 500,
+            'Roach License - Ultra': 250,
             'Roach License - Expert': 100,
+            'Roach License - Intermediate': 50,
             'Roach License - Basic': 15
         }
 
         updates = 0
 
-        # 2. The Upsert Query: Insert the baseline, but ONLY overwrite if the new number is higher.
+        # Query
         query = """
             INSERT INTO roach_tracker (user_id, roaches) 
             VALUES ($1, $2)
             ON CONFLICT (user_id) 
             DO UPDATE SET roaches = EXCLUDED.roaches 
-            WHERE roach_tracker.roaches < EXCLUDED.roaches
         """
 
         async with self.bot.db_pool.acquire() as conn:
